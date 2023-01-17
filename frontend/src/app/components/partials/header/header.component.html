@@ -1,0 +1,49 @@
+<!-- trzeba dołożyć w obu wersjach hover i active (czyli zaznaczenie gdy jesteśmy na danej stronie) -->
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">HabitTracker</a>
+    <button
+      *ngIf="collapseMenu"
+      class="navbar-toggler"
+      (click)="open(content)"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      *ngIf="!collapseMenu"
+      class="collapse navbar-collapse justify-content-end"
+    >
+      <ul class="navbar-nav">
+        <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title" id="offcanvas-basic-title">Menu</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #outletLi>
+  <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+    <a routerLink="{{ menuDefinition.url }}" class="nav-link">{{
+      menuDefinition.title
+    }}</a>
+  </li>
+</ng-template>
