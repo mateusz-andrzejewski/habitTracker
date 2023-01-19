@@ -1,5 +1,4 @@
-<!-- trzeba dołożyć w obu wersjach hover i active (czyli zaznaczenie gdy jesteśmy na danej stronie) -->
-
+<!-- dopracować aby w obu widokach zaloguj i wyloguj były odosobnione z boku i na dole w mobilnym -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand">HabitTracker</a>
@@ -16,9 +15,7 @@
       *ngIf="!collapseMenu"
       class="collapse navbar-collapse justify-content-end"
     >
-      <ul class="navbar-nav">
-        <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
-      </ul>
+      <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
     </div>
   </div>
 </nav>
@@ -41,9 +38,34 @@
 </ng-template>
 
 <ng-template #outletLi>
-  <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
-    <a routerLink="{{ menuDefinition.url }}" class="nav-link">{{
-      menuDefinition.title
-    }}</a>
-  </li>
+  <ng-container *ngIf="collapseMenu; else bigMenu">
+    <ul class="navbar-nav w-50">
+      <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+        <a
+          routerLink="{{ menuDefinition.url }}"
+          routerLinkActive="active-link"
+          [ngClass]="{
+            'mobile-menu': collapseMenu
+          }"
+          class="nav-link"
+          >{{ menuDefinition.title }}</a
+        >
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #bigMenu>
+    <ul class="navbar-nav h-100">
+      <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+        <a
+          routerLink="{{ menuDefinition.url }}"
+          routerLinkActive="active-link"
+          [ngClass]="{
+            'mobile-menu': collapseMenu
+          }"
+          class="nav-link"
+          >{{ menuDefinition.title }}</a
+        >
+      </li>
+    </ul>
+  </ng-template>
 </ng-template>
