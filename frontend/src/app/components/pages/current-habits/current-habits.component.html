@@ -1,1 +1,48 @@
-<p>current-habits works!</p>
+<app-title [title]="'Aktualne nawyki'"></app-title>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs text-bg-dark">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink class="text-light bg-secondary">Dashboard</a>
+    <ng-template ngbNavContent>
+      <section class="p-4">
+        <header>
+          <p class="text-muted">
+            Ilość aktualnych nawyków: {{ currentHabits.length }}
+          </p>
+        </header>
+      </section>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink class="text-light bg-secondary">Ciało</a>
+    <ng-template ngbNavContent>
+      <section class="p-4">
+        <header>
+          <p class="text-muted">Nawyki rozwijające ciało:</p>
+        </header>
+      </section>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink class="text-light bg-secondary">Duch</a>
+    <ng-template ngbNavContent>
+      <section class="p-4">
+        <header>
+          <p class="text-muted">Nawyki rozwijające ducha:</p>
+        </header>
+      </section>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="4">
+    <a ngbNavLink class="text-light bg-secondary">Konto</a>
+    <ng-template ngbNavContent>
+      <section class="p-4">
+        <header>
+          <p class="text-muted">Nawyki rozwijające stan konta:</p>
+        </header>
+      </section>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
