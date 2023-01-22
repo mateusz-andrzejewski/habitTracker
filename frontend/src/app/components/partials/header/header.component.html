@@ -65,9 +65,8 @@
 </ng-template>
 
 <ng-template #content let-offcanvas>
-  <div class="offcanvas-header">
+  <div class="offcanvas-header text-dark">
     <h4 class="offcanvas-title" id="offcanvas-basic-title">Menu</h4>
-    <h6>Witaj, {{ user.name }}</h6>
     <button
       type="button"
       class="btn-close"
@@ -76,6 +75,7 @@
     ></button>
   </div>
   <div class="offcanvas-body">
+    <h6 class="text-dark mb-3">Witaj, {{ user.name }}</h6>
     <ng-container [ngTemplateOutlet]="mobileMenu"></ng-container>
   </div>
 </ng-template>
@@ -98,15 +98,6 @@
 
     <section>
       <hr />
-      <!-- <li class="nav-item">
-        <a
-          *ngIf="menuDefinition.authMenu"
-          routerLink="{{ menuDefinition.url }}"
-          routerLinkActive="active-link-mobile"
-          class="nav-link"
-          >{{ menuDefinition.title }}</a
-        >
-      </li> -->
       <li
         routerLinkActive="active-link-mobile"
         class="nav-link p-2"

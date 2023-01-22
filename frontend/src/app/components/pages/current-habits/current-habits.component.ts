@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { HabitService } from 'src/app/services/habit.service';
+import { displayMode } from 'src/app/shared/enums/display-mode';
+import { Habit } from 'src/app/shared/models/habit';
 
 @Component({
   selector: 'app-current-habits',
@@ -8,11 +10,11 @@ import { HabitService } from 'src/app/services/habit.service';
   styleUrls: ['./current-habits.component.scss'],
 })
 export class CurrentHabitsComponent implements OnInit {
-  currentHabits!: any;
+  currentHabits!: Habit[];
   active = 1;
+  displayMode = displayMode;
 
   constructor(private _habitService: HabitService) {}
-  // do zrobineia model / interface dla nawyków
   ngOnInit() {
     this._habitService
       .getCurrentHabits()

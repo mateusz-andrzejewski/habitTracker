@@ -11,6 +11,7 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 import { CurrentHabitsComponent } from './components/pages/current-habits/current-habits.component';
 import { HabitService } from './services/habit.service';
 import { TitleComponent } from './components/partials/title/title.component';
+import { TabInputComponent } from './components/partials/tab-input/tab-input.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TitleComponent } from './components/partials/title/title.component';
     FooterComponent,
     CurrentHabitsComponent,
     TitleComponent,
+    TabInputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [HabitService],
