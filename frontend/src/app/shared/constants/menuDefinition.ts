@@ -1,6 +1,25 @@
 export const menuDefinitions = [
-  { title: 'Zaloguj', order: 3, authorized: false, url: '#', authMenu: true },
-  { title: 'Wyloguj', order: 3, authorized: true, url: '#', authMenu: true },
+  {
+    title: 'Logowanie',
+    order: 3,
+    authorized: false,
+    url: '#',
+    authMenu: true,
+  },
+  {
+    title: 'Rejestracja',
+    order: 3,
+    authorized: true,
+    url: '#',
+    authMenu: true,
+  },
+  {
+    title: 'Wyloguj',
+    order: 3,
+    authorized: true,
+    url: '#',
+    authMenu: true,
+  },
   {
     title: 'Aktualne Nawyki',
     order: 1,

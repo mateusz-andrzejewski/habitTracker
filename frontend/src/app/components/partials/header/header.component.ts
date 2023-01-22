@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
 
   public collapseMenu!: boolean;
   public menuDefinitions = getMenuDefinitions();
+  public isLoggedIn = false;
+  user = { name: 'Mateusz' };
 
   constructor(private offcanvasService: NgbOffcanvas) {}
 

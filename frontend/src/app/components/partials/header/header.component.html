@@ -1,4 +1,3 @@
-<!-- dopracować aby w obu widokach zaloguj i wyloguj były odosobnione z boku i na dole w mobilnym -->
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand text-muted">HabitTracker</a>
@@ -15,14 +14,60 @@
       *ngIf="!collapseMenu"
       class="collapse navbar-collapse justify-content-end"
     >
-      <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
+      <ng-container [ngTemplateOutlet]="bigMenu"></ng-container>
     </div>
   </div>
 </nav>
 
+<ng-template #bigMenu>
+  <ul class="navbar-nav h-100 d-flex justify-content-end">
+    <section class="d-flex">
+      <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+        <a
+          *ngIf="!menuDefinition.authMenu"
+          routerLink="{{ menuDefinition.url }}"
+          routerLinkActive="active-link"
+          class="nav-link"
+          >{{ menuDefinition.title }}</a
+        >
+      </li>
+    </section>
+    <section class="d-flex">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn nav-link"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          {{ user.name }}
+        </button>
+        <div
+          ngbDropdownMenu
+          aria-labelledby="dropdownBasic1"
+          id="dropdownButtons"
+          class="bg-secondary"
+        >
+          <button class="text-light" *ngIf="!isLoggedIn" ngbDropdownItem>
+            Logowanie
+          </button>
+          <button class="text-light" *ngIf="!isLoggedIn" ngbDropdownItem>
+            Rejestracja
+          </button>
+
+          <button class="text-light" *ngIf="isLoggedIn" ngbDropdownItem>
+            Wyloguj
+          </button>
+        </div>
+      </div>
+    </section>
+  </ul>
+</ng-template>
+
 <ng-template #content let-offcanvas>
   <div class="offcanvas-header">
     <h4 class="offcanvas-title" id="offcanvas-basic-title">Menu</h4>
+    <h6>Witaj, {{ user.name }}</h6>
     <button
       type="button"
       class="btn-close"
@@ -31,41 +76,59 @@
     ></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="navbar-nav">
-      <ng-container [ngTemplateOutlet]="outletLi"></ng-container>
-    </ul>
+    <ng-container [ngTemplateOutlet]="mobileMenu"></ng-container>
   </div>
 </ng-template>
 
-<ng-template #outletLi>
-  <ng-container *ngIf="collapseMenu; else bigMenu">
-    <ul class="navbar-nav w-50">
+<ng-template #mobileMenu>
+  <ul
+    class="navbar-nav h-100 px-2 d-flex flex-column justify-content-between text-dark"
+  >
+    <section>
       <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
         <a
+          *ngIf="!menuDefinition.authMenu"
           routerLink="{{ menuDefinition.url }}"
-          routerLinkActive="active-link"
-          [ngClass]="{
-            'mobile-menu': collapseMenu
-          }"
-          class="nav-link"
+          routerLinkActive="active-link-mobile"
+          class="nav-link p-2"
           >{{ menuDefinition.title }}</a
         >
       </li>
-    </ul>
-  </ng-container>
-  <ng-template #bigMenu>
-    <ul class="navbar-nav h-100">
-      <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+    </section>
+
+    <section>
+      <hr />
+      <!-- <li class="nav-item">
         <a
+          *ngIf="menuDefinition.authMenu"
           routerLink="{{ menuDefinition.url }}"
-          routerLinkActive="active-link"
-          [ngClass]="{
-            'mobile-menu': collapseMenu
-          }"
+          routerLinkActive="active-link-mobile"
           class="nav-link"
           >{{ menuDefinition.title }}</a
         >
+      </li> -->
+      <li
+        routerLinkActive="active-link-mobile"
+        class="nav-link p-2"
+        *ngIf="!isLoggedIn"
+      >
+        Logowanie
       </li>
-    </ul>
-  </ng-template>
+      <li
+        routerLinkActive="active-link-mobile"
+        class="nav-link p-2"
+        *ngIf="!isLoggedIn"
+      >
+        Rejestracja
+      </li>
+
+      <li
+        routerLinkActive="active-link-mobile"
+        class="nav-link p-2"
+        *ngIf="isLoggedIn"
+      >
+        Wyloguj
+      </li>
+    </section>
+  </ul>
 </ng-template>

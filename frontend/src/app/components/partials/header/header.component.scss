@@ -1,12 +1,17 @@
 .active-link {
-  color: black;
-  background-color: #ddd;
+  color: rgb(226, 216, 216);
+  background-color: #6c757d;
   border-radius: 15px;
 }
 
-.mobile-menu {
-  display: block;
-  padding-left: 20px;
+.active-link-mobile {
+  color: rgb(226, 216, 216);
+  background-color: #6c757d;
+  border-radius: 15px;
+}
+
+#dropdownButtons button:hover {
+  color: rgb(104, 99, 99) !important;
 }
 
 
