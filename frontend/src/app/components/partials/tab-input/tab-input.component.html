@@ -1,1 +1,22 @@
-{{ displayMode }}
+<table class="table table-striped bg-dark text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nawyk</th>
+      <th scope="col">Kategorie</th>
+      <th scope="col">Częstotliwość</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let habit of habitsFromCategory; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ habit.name | uppercase }}
+      </td>
+      <td>
+        <p *ngFor="let category of habit.category">{{ category }}</p>
+      </td>
+      <td>{{ habit.frequencyWeek | number }}</td>
+    </tr>
+  </tbody>
+</table>

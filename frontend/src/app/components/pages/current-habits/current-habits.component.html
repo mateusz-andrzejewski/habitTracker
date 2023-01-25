@@ -7,9 +7,10 @@
       <section class="p-4">
         <header>
           <p class="text-muted">
-            Ilość aktualnych nawyków: {{ currentHabits.length }}
+            Ilość aktualnie kształtowanych nawyków: {{ currentHabits.length }}
           </p>
         </header>
+        <app-tab-input [category]="categoryMode.all"></app-tab-input>
       </section>
     </ng-template>
   </li>
@@ -20,7 +21,7 @@
         <header>
           <p class="text-muted">Nawyki rozwijające ciało:</p>
         </header>
-        <app-tab-input [displayMode]="displayMode.body"></app-tab-input>
+        <app-tab-input [category]="categoryMode.body"></app-tab-input>
       </section>
     </ng-template>
   </li>
@@ -31,7 +32,7 @@
         <header>
           <p class="text-muted">Nawyki rozwijające ducha:</p>
         </header>
-        <app-tab-input [displayMode]="displayMode.spirit"></app-tab-input>
+        <app-tab-input [category]="categoryMode.spirit"></app-tab-input>
       </section>
     </ng-template>
   </li>
@@ -42,7 +43,7 @@
         <header>
           <p class="text-muted">Nawyki rozwijające stan konta:</p>
         </header>
-        <app-tab-input [displayMode]="displayMode.account"></app-tab-input>
+        <app-tab-input [category]="categoryMode.money"></app-tab-input>
       </section>
     </ng-template>
   </li>

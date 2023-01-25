@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { HabitService } from 'src/app/services/habit.service';
-import { displayMode } from 'src/app/shared/enums/display-mode';
+import { categoryMode } from 'src/app/shared/enums/category-mode';
 import { Habit } from 'src/app/shared/models/habit';
 
 @Component({
@@ -12,13 +12,19 @@ import { Habit } from 'src/app/shared/models/habit';
 export class CurrentHabitsComponent implements OnInit {
   currentHabits!: Habit[];
   active = 1;
-  displayMode = displayMode;
+  categoryMode = categoryMode;
 
   constructor(private _habitService: HabitService) {}
   ngOnInit() {
-    this._habitService
-      .getCurrentHabits()
-      .subscribe((currentHabits) => (this.currentHabits = currentHabits));
-    console.log(this.currentHabits);
+    this._getAllHabits();
+  }
+
+  private _getAllHabits() {
+    this._habitService.getCurrentHabits().subscribe({
+      next: (currentHabits) => (this.currentHabits = currentHabits),
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

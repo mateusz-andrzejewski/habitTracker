@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { sample_habits } from '../DATA';
+import { Habit } from '../shared/models/habit';
+import { categoryMode } from '../shared/enums/category-mode';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +11,18 @@ import { sample_habits } from '../DATA';
 export class HabitService {
   constructor(private _http: HttpClient) {}
 
-  getCurrentHabits(): Observable<any> {
-    // return this._http.get<any>('url');
+  getCurrentHabits(): Observable<Habit[]> {
+    // return this._http.get<Habit[]>('url');
     return of(sample_habits);
+  }
+
+  getHabitsFromCategory(category: string): Observable<Habit[]> {
+    if (category === categoryMode.all) return this.getCurrentHabits();
+    // return this._http.get<Habit[]>('url');
+    return of(
+      sample_habits.filter((habit) => {
+        return habit.category.includes(category);
+      })
+    );
   }
 }

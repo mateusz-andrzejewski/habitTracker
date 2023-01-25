@@ -4,5 +4,5 @@ export class Habit {
   category!: string[];
   dateStart!: string;
   dateEnd!: string;
-  frequencyPerDay!: number;
+  frequencyWeek!: number;
 }
