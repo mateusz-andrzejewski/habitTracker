@@ -3,7 +3,64 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
+@mixin control-style {
+  color: rgba(255, 255, 255, 0.535) !important;
+  background-color: #1f202481 !important;
+}
+
+@mixin control-style-focus {
+  border: 2px solid rgba(255, 255, 255, 0.543) !important;
+  box-shadow: 0 0 0 0.10rem rgba(229, 232, 237, 0.25) !important;
+}
+
+@mixin calendar {
+  color: rgba(255, 255, 255, 0.389) !important;
+  background-color: #212529 !important
+}
+
 body {
   background: #1F2024;
   color: rgba(255, 255, 255, 0.535);
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+.form-control {
+  @include control-style;
+
+  &:focus{
+    @include control-style-focus;
+  }
+}
+
+.form-select {
+  @include control-style;
+
+  &:focus{
+    @include control-style-focus;
+  }
+}
+
+.control-label{
+  font-weight: bold;
+}
+
+.ngb-dp-header {
+  background-color: #212529 !important
+}
+
+.ngb-dp-arrow-btn{
+color: rgba(255, 255, 255, 0.389) !important;
+}
+
+.ngb-dp-week{
+  @include calendar;
+}
+
+.ngb-dp-weekday{
+@include calendar;
 }

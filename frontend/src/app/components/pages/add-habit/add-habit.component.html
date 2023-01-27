@@ -1,0 +1,39 @@
+<app-title [title]="'Dodaj nawyk'"></app-title>
+
+<section class="row justify-content-center">
+  <div class="m-1 col-10 col-sm-8 p-1 border border-secondary rounded">
+    <form #habitForm class="row justify-content-center">
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "nazwa nawyku" | uppercase
+        }}</label>
+        <input class="form-control" />
+      </div>
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "kategorie" | uppercase
+        }}</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected></option>
+          <option value="1">Stan ciała</option>
+          <option value="2">Stan ducha</option>
+          <option value="3">Stan konta</option>
+        </select>
+      </div>
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "Data od" | uppercase
+        }}</label>
+        <habit-tracker-calendar></habit-tracker-calendar>
+      </div>
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "Data do" | uppercase
+        }}</label>
+        <habit-tracker-calendar
+          (selectedCalendarDate)="showValue($event)"
+        ></habit-tracker-calendar>
+      </div>
+    </form>
+  </div>
+</section>

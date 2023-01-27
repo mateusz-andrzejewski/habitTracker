@@ -4,7 +4,7 @@
       <th scope="col">#</th>
       <th scope="col">Nawyk</th>
       <th scope="col">Kategorie</th>
-      <th scope="col">Częstotliwość</th>
+      <th scope="col">Częstotliwość w tyg.</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +14,9 @@
         {{ habit.name | uppercase }}
       </td>
       <td>
-        <p *ngFor="let category of habit.category">{{ category }}</p>
+        <p *ngFor="let category of habit.category">
+          {{ category | category | uppercase }}
+        </p>
       </td>
       <td>{{ habit.frequencyWeek | number }}</td>
     </tr>

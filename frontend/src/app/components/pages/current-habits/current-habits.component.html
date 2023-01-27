@@ -1,49 +1,78 @@
 <app-title [title]="'Aktualne nawyki'"></app-title>
 
+<div class="row p-4 justify-content-end">
+  <button
+    (click)="navigateToAddHabitForm()"
+    class="btn btn-outline-secondary col-sm-3"
+  >
+    Dodaj nawyk
+  </button>
+</div>
+
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs text-bg-dark">
   <li [ngbNavItem]="1">
     <a ngbNavLink class="text-light">Dashboard</a>
     <ng-template ngbNavContent>
-      <section class="p-4">
+      <section class="p-4 row">
         <header>
           <p class="text-muted">
             Ilość aktualnie kształtowanych nawyków: {{ currentHabits.length }}
           </p>
         </header>
-        <app-tab-input [category]="categoryMode.all"></app-tab-input>
+        <section class="d-flex justify-content-center">
+          <app-tab-input
+            class="col-sm-6 border border-secondary rounded p-2"
+            [category]="categoryMode.all"
+          ></app-tab-input>
+        </section>
       </section>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
     <a ngbNavLink class="text-light">Ciało</a>
     <ng-template ngbNavContent>
-      <section class="p-4">
+      <section class="p-4 row">
         <header>
           <p class="text-muted">Nawyki rozwijające ciało:</p>
         </header>
-        <app-tab-input [category]="categoryMode.body"></app-tab-input>
+        <section class="d-flex justify-content-center">
+          <app-tab-input
+            class="col-sm-6 border border-secondary rounded p-2"
+            [category]="categoryMode.body"
+          ></app-tab-input>
+        </section>
       </section>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
     <a ngbNavLink class="text-light">Duch</a>
     <ng-template ngbNavContent>
-      <section class="p-4">
+      <section class="p-4 row">
         <header>
           <p class="text-muted">Nawyki rozwijające ducha:</p>
         </header>
-        <app-tab-input [category]="categoryMode.spirit"></app-tab-input>
+        <section class="d-flex justify-content-center">
+          <app-tab-input
+            class="col-sm-6 border border-secondary rounded p-2"
+            [category]="categoryMode.spirit"
+          ></app-tab-input>
+        </section>
       </section>
     </ng-template>
   </li>
   <li [ngbNavItem]="4">
     <a ngbNavLink class="text-light">Konto</a>
     <ng-template ngbNavContent>
-      <section class="p-4">
+      <section class="p-4 row">
         <header>
           <p class="text-muted">Nawyki rozwijające stan konta:</p>
         </header>
-        <app-tab-input [category]="categoryMode.money"></app-tab-input>
+        <section class="d-flex justify-content-center">
+          <app-tab-input
+            class="col-sm-6 border border-secondary rounded p-2"
+            [category]="categoryMode.money"
+          ></app-tab-input>
+        </section>
       </section>
     </ng-template>
   </li>

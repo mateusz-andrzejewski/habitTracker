@@ -1,0 +1,18 @@
+<section class="p-sm-3">
+  <ngb-datepicker
+    [(ngModel)]="date"
+    (ngModelChange)="emitCalendarValue()"
+  ></ngb-datepicker>
+  <div>
+    <ng-container *ngIf="date; else backup">
+      <p>
+        {{ date.year | calendarZero }}-{{ date.month | calendarZero }}-{{
+          date.day | calendarZero
+        }}
+      </p>
+    </ng-container>
+    <ng-template #backup>
+      <p>{{ "brak danych" | uppercase }}</p></ng-template
+    >
+  </div>
+</section>
