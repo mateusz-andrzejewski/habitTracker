@@ -6,9 +6,7 @@
   <div>
     <ng-container *ngIf="date; else backup">
       <p>
-        {{ date.year | calendarZero }}-{{ date.month | calendarZero }}-{{
-          date.day | calendarZero
-        }}
+        {{ date | calendarZero }}
       </p>
     </ng-container>
     <ng-template #backup>

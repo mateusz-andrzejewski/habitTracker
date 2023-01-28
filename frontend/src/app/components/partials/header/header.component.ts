@@ -38,4 +38,8 @@ export class HeaderComponent implements OnInit {
         (reason: any) => {}
       );
   }
+
+  close() {
+    this.offcanvasService.dismiss();
+  }
 }

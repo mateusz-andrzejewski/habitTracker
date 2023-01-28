@@ -51,9 +51,6 @@
           <button class="text-light" *ngIf="!isLoggedIn" ngbDropdownItem>
             Logowanie
           </button>
-          <button class="text-light" *ngIf="!isLoggedIn" ngbDropdownItem>
-            Rejestracja
-          </button>
 
           <button class="text-light" *ngIf="isLoggedIn" ngbDropdownItem>
             Wyloguj
@@ -85,7 +82,11 @@
     class="navbar-nav h-100 px-2 d-flex flex-column justify-content-between text-dark"
   >
     <section>
-      <li *ngFor="let menuDefinition of menuDefinitions" class="nav-item">
+      <li
+        *ngFor="let menuDefinition of menuDefinitions"
+        (click)="close()"
+        class="nav-item"
+      >
         <a
           *ngIf="!menuDefinition.authMenu"
           routerLink="{{ menuDefinition.url }}"
@@ -96,7 +97,7 @@
       </li>
     </section>
 
-    <section>
+    <section class="mb-2 pb-5">
       <hr />
       <li
         routerLinkActive="active-link-mobile"
@@ -105,14 +106,6 @@
       >
         Logowanie
       </li>
-      <li
-        routerLinkActive="active-link-mobile"
-        class="nav-link p-2"
-        *ngIf="!isLoggedIn"
-      >
-        Rejestracja
-      </li>
-
       <li
         routerLinkActive="active-link-mobile"
         class="nav-link p-2"

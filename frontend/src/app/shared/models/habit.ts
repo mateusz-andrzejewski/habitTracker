@@ -5,4 +5,5 @@ export class Habit {
   dateStart!: string;
   dateEnd!: string;
   frequencyWeek!: number;
+  goal!: string;
 }

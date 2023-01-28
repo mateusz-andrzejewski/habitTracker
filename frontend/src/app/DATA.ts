@@ -8,6 +8,7 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-19',
     dateEnd: '2023-04-19',
     frequencyWeek: 4,
+    goal: 'będę czuł się pewny mając super sylwetkę',
   },
   {
     id: '1',
@@ -16,6 +17,7 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-19',
     dateEnd: '2023-04-19',
     frequencyWeek: 7,
+    goal: 'będę czuł się zdrowy',
   },
   {
     id: '2',
@@ -24,6 +26,7 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-19',
     dateEnd: '2023-04-19',
     frequencyWeek: 1,
+    goal: 'będę czuł się opanowany i pewny',
   },
   {
     id: '3',
@@ -32,6 +35,7 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-25',
     dateEnd: '2023-04-25',
     frequencyWeek: 5,
+    goal: 'będę czuł się zawsze komfortowo',
   },
   {
     id: '4',
@@ -40,6 +44,7 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-19',
     dateEnd: '2023-04-19',
     frequencyWeek: 1,
+    goal: 'będę czuł się panem swojego losu',
   },
   {
     id: '5',
@@ -48,5 +53,6 @@ export const sample_habits: Habit[] = [
     dateStart: '2023-01-25',
     dateEnd: '2023-04-25',
     frequencyWeek: 1,
+    goal: 'będę czuł że mam kontrolę nad kasą',
   },
 ];

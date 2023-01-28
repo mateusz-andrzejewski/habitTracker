@@ -64,3 +64,12 @@ color: rgba(255, 255, 255, 0.389) !important;
 .ngb-dp-weekday{
 @include calendar;
 }
+
+.offcanvas {
+  background-color: #d9dfe5c8 !important;
+}
+
+textarea{
+background-color: #212529;
+color: rgba(255, 255, 255, 0.535);
+}

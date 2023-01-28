@@ -2,12 +2,14 @@
 
 <section class="row justify-content-center">
   <div class="m-1 col-10 col-sm-8 p-1 border border-secondary rounded">
-    <form #habitForm class="row justify-content-center">
+    <form [formGroup]="form" class="row justify-content-center">
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "nazwa nawyku" | uppercase
         }}</label>
-        <input class="form-control" />
+        <input class="form-control" [formControl]="form.controls.name" />
+        <habit-tracker-validation-error [formControlError]="form.controls.name">
+        </habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
@@ -34,6 +36,41 @@
           (selectedCalendarDate)="showValue($event)"
         ></habit-tracker-calendar>
       </div>
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "Częstotliwość na tydzień" | uppercase
+        }}</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+      </div>
+      <div class="col-sm-6 py-1 px-2 text-muted form-group">
+        <label for="habit-name" class="control-label col-12 p-1">{{
+          "Opisz jaki będziesz gdy wyrobisz ten nawyk" | uppercase
+        }}</label>
+        <textarea
+          class="bg-dark text-light"
+          name=""
+          id=""
+          cols="40"
+          rows="10"
+        ></textarea>
+      </div>
+      <section class="row m-1 p-2 justify-content-center">
+        <section class="col-6 row gap-2 justify-content-center">
+          <button type="submit" class="btn btn-primary">Dodaj</button>
+          <button type="submit" class="btn btn-outline-secondary">
+            Anuluj
+          </button>
+        </section>
+      </section>
     </form>
   </div>
 </section>

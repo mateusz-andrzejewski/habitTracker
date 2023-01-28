@@ -5,7 +5,7 @@ import {
   NgbDatepickerModule,
 } from '@ng-bootstrap/ng-bootstrap';
 
-type calendarDate = {
+export type calendarDate = {
   year: number;
   month: number;
   day: number;

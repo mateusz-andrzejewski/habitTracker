@@ -1,15 +1,8 @@
 export const menuDefinitions = [
   {
-    title: 'Logowanie',
+    title: 'Logowanie | Rejestracja',
     order: 3,
     authorized: false,
-    url: '#',
-    authMenu: true,
-  },
-  {
-    title: 'Rejestracja',
-    order: 3,
-    authorized: true,
     url: '#',
     authMenu: true,
   },

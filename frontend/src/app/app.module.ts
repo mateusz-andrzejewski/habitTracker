@@ -17,6 +17,7 @@ import { AddHabitComponent } from './components/pages/add-habit/add-habit.compon
 import { HabitTrackerCalendarComponent } from './shared/components/habit-tracker-calendar/habit-tracker-calendar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarZeroPipe } from './shared/pipes/calendar-zero.pipe';
+import { HabitTrackerValidationErrorComponent } from './shared/components/habit-tracker-validation-error/habit-tracker-validation-error.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CalendarZeroPipe } from './shared/pipes/calendar-zero.pipe';
     AddHabitComponent,
     HabitTrackerCalendarComponent,
     CalendarZeroPipe,
+    HabitTrackerValidationErrorComponent,
   ],
   imports: [
     BrowserModule,
