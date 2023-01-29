@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { HabitService } from 'src/app/services/habit.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 export interface habitForm {
@@ -44,7 +45,21 @@ export class AddHabitComponent {
     }),
   });
 
-  constructor(private _fb: FormBuilder, private _toastService: ToastService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _toastService: ToastService,
+    private _habitService: HabitService
+  ) {}
 
-  onSubmit() {}
+  onSubmit() {
+    this._habitService.addhabit(this.form.value).subscribe({
+      next: (value) => {
+        this._toastService.showSuccess({ text: 'Dodano nawyk' });
+        console.log(value);
+      },
+      error: (err) => {
+        this._toastService.showDanger({ text: 'Dodanie nie powiodło się' });
+      },
+    });
+  }
 }

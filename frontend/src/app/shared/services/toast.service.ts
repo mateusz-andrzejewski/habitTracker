@@ -36,10 +36,10 @@ export class ToastService {
     });
   }
 
-  showDanger(text: string, options?: any) {
+  showDanger(toast: Toast) {
     this._show({
-      text: text,
-      options: options || {
+      text: toast.text,
+      options: toast.options || {
         classname: 'bg-danger text-light',
         delay: 3000,
       },
@@ -56,6 +56,5 @@ export class ToastService {
 
   private _show(toast: finallyToast) {
     this.toasts.push({ text: toast.text, options: { ...toast.options } });
-    console.log(this.toasts);
   }
 }

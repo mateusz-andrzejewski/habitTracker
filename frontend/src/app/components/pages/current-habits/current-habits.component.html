@@ -15,8 +15,8 @@
     <ng-template ngbNavContent>
       <section class="p-4 row">
         <header>
-          <p class="text-muted">
-            Ilość aktualnie kształtowanych nawyków: {{ currentHabits.length }}
+          <p *ngIf="currentHabits" text-muted>
+            Ilość aktualnie kształtowanych nawyków: ({{ currentHabits.length }})
           </p>
         </header>
         <section class="d-flex justify-content-center">
