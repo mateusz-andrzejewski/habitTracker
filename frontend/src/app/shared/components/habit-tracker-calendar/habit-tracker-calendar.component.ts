@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   NgbDateStruct,
   NgbCalendar,
@@ -17,10 +18,6 @@ export type calendarDate = {
   styleUrls: ['./habit-tracker-calendar.component.scss'],
 })
 export class HabitTrackerCalendarComponent {
-  @Output() selectedCalendarDate = new EventEmitter<calendarDate>();
-  date!: calendarDate;
-
-  emitCalendarValue() {
-    this.selectedCalendarDate.emit(this.date);
-  }
+  @Input() formControlCalendar!: string;
+  @Input() formCalendar!: any;
 }

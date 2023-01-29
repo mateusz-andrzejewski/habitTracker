@@ -2,7 +2,11 @@
 
 <section class="row justify-content-center">
   <div class="m-1 col-10 col-sm-8 p-1 border border-secondary rounded">
-    <form [formGroup]="form" class="row justify-content-center">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="row justify-content-center"
+    >
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "nazwa nawyku" | uppercase
@@ -12,35 +16,57 @@
         </habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
-        <label for="habit-name" class="control-label col-12 p-1">{{
+        <label for="habit-category" class="control-label col-12 p-1">{{
           "kategorie" | uppercase
         }}</label>
-        <select class="form-select" aria-label="Default select example">
+        <select
+          [formControl]="form.controls.category"
+          class="form-select"
+          aria-label="habit category"
+        >
           <option selected></option>
           <option value="1">Stan ciała</option>
           <option value="2">Stan ducha</option>
           <option value="3">Stan konta</option>
         </select>
+        <habit-tracker-validation-error
+          [formControlError]="form.controls.category"
+        >
+        </habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "Data od" | uppercase
         }}</label>
-        <habit-tracker-calendar></habit-tracker-calendar>
+        <habit-tracker-calendar
+          [formCalendar]="form"
+          [formControlCalendar]="'dateStart'"
+        ></habit-tracker-calendar>
+        <habit-tracker-validation-error
+          [formControlError]="form.controls.dateStart"
+        ></habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "Data do" | uppercase
         }}</label>
         <habit-tracker-calendar
-          (selectedCalendarDate)="showValue($event)"
+          [formCalendar]="form"
+          [formControlCalendar]="'dateEnd'"
         ></habit-tracker-calendar>
+        <habit-tracker-validation-error
+          [formControlError]="form.controls.dateEnd"
+        ></habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "Częstotliwość na tydzień" | uppercase
         }}</label>
-        <select class="form-select" aria-label="Default select example">
+        <select
+          class="form-select"
+          [formControl]="form.controls.frequencyWeek"
+          aria-label="Habit frequency per week"
+        >
           <option selected></option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -50,23 +76,36 @@
           <option value="6">6</option>
           <option value="7">7</option>
         </select>
+        <habit-tracker-validation-error
+          [formControlError]="form.controls.frequencyWeek"
+        ></habit-tracker-validation-error>
       </div>
       <div class="col-sm-6 py-1 px-2 text-muted form-group">
         <label for="habit-name" class="control-label col-12 p-1">{{
           "Opisz jaki będziesz gdy wyrobisz ten nawyk" | uppercase
         }}</label>
         <textarea
+          [formControl]="form.controls.goal"
           class="bg-dark text-light"
           name=""
           id=""
           cols="40"
           rows="10"
         ></textarea>
+        <habit-tracker-validation-error
+          [formControlError]="form.controls.goal"
+        ></habit-tracker-validation-error>
       </div>
       <section class="row m-1 p-2 justify-content-center">
         <section class="col-6 row gap-2 justify-content-center">
-          <button type="submit" class="btn btn-primary">Dodaj</button>
-          <button type="submit" class="btn btn-outline-secondary">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            Dodaj
+          </button>
+          <button type="button" class="btn btn-outline-secondary">
             Anuluj
           </button>
         </section>

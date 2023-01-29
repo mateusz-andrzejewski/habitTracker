@@ -1,12 +1,13 @@
 <section class="p-sm-3">
   <ngb-datepicker
-    [(ngModel)]="date"
-    (ngModelChange)="emitCalendarValue()"
+    [formControl]="formCalendar.controls[formControlCalendar]"
   ></ngb-datepicker>
   <div>
-    <ng-container *ngIf="date; else backup">
+    <ng-container
+      *ngIf="formCalendar.controls[formControlCalendar]?.value; else backup"
+    >
       <p>
-        {{ date | calendarZero }}
+        {{ formCalendar.controls[formControlCalendar].value | calendarZero }}
       </p>
     </ng-container>
     <ng-template #backup>

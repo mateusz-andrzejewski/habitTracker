@@ -44,7 +44,8 @@ export class AddHabitComponent {
   });
 
   constructor(private _fb: FormBuilder) {}
-  showValue(value: any) {
-    console.log(value);
+
+  onSubmit() {
+    console.log(this.form.value);
   }
 }
