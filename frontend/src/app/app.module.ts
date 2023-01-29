@@ -18,6 +18,8 @@ import { HabitTrackerCalendarComponent } from './shared/components/habit-tracker
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarZeroPipe } from './shared/pipes/calendar-zero.pipe';
 import { HabitTrackerValidationErrorComponent } from './shared/components/habit-tracker-validation-error/habit-tracker-validation-error.component';
+import { ToastService } from './shared/services/toast.service';
+import { HabitTrackerToastContainerComponent } from './shared/components/habit-tracker-toast-container/habit-tracker-toast-container.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { HabitTrackerValidationErrorComponent } from './shared/components/habit-
     HabitTrackerCalendarComponent,
     CalendarZeroPipe,
     HabitTrackerValidationErrorComponent,
+    HabitTrackerToastContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { HabitTrackerValidationErrorComponent } from './shared/components/habit-
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [HabitService],
+  providers: [HabitService, ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

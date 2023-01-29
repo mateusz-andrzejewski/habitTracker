@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 export interface habitForm {
   name: FormControl<string>;
@@ -43,9 +44,7 @@ export class AddHabitComponent {
     }),
   });
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder, private _toastService: ToastService) {}
 
-  onSubmit() {
-    console.log(this.form.value);
-  }
+  onSubmit() {}
 }

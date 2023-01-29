@@ -25,4 +25,8 @@ export class HabitService {
       })
     );
   }
+
+  addhabit(habit: Habit): void {
+    this._http.post<Habit>('', habit);
+  }
 }
