@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { HabitService } from 'src/app/services/habit.service';
 import { categoryMode } from 'src/app/shared/enums/category-mode';
@@ -15,21 +15,16 @@ export class CurrentHabitsComponent implements OnInit {
   active = 1;
   categoryMode = categoryMode;
 
-  constructor(private _habitService: HabitService, private _router: Router) {}
+  constructor(
+    private _habitService: HabitService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {}
   ngOnInit() {
-    this._getAllHabits();
+    this.currentHabits = this._activatedRoute.snapshot.data['currentHabits'];
   }
 
   navigateToAddHabitForm() {
     this._router.navigateByUrl('add-habit');
-  }
-
-  private _getAllHabits() {
-    this._habitService.getCurrentHabits().subscribe({
-      next: (currentHabits) => (this.currentHabits = currentHabits),
-      error: (err) => {
-        console.log(err);
-      },
-    });
   }
 }

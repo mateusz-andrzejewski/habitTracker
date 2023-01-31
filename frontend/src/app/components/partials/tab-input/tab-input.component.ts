@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HabitService } from 'src/app/services/habit.service';
 import { Habit } from 'src/app/shared/models/habit';
 import { categoryMode } from 'src/app/shared/enums/category-mode';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-tab-input',
@@ -11,9 +12,12 @@ import { categoryMode } from 'src/app/shared/enums/category-mode';
 export class TabInputComponent implements OnInit {
   @Input() category!: categoryMode;
 
-  habitsFromCategory!: Habit[];
+  habitsByCategory!: Habit[];
 
-  constructor(private _habitService: HabitService) {}
+  constructor(
+    private _habitService: HabitService,
+    private _toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this._getHabitsFromCategory();
@@ -22,9 +26,10 @@ export class TabInputComponent implements OnInit {
   private _getHabitsFromCategory() {
     this._habitService.getHabitsFromCategory(this.category).subscribe({
       next: (habitsFromCategory) => {
-        this.habitsFromCategory = habitsFromCategory;
+        this.habitsByCategory = habitsFromCategory;
       },
       error: (err) => {
+        this._toastService.showDanger({ text: 'Pobranie nie powiodło się' });
         console.log(err);
       },
     });
